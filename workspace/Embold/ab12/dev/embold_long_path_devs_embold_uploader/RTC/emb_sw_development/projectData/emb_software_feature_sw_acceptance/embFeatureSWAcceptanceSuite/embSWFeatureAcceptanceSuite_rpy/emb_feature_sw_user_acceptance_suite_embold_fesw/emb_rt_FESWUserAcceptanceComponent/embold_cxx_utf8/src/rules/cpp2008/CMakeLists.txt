@@ -1,0 +1,64 @@
+SET(LOCAL_SOURCES 
+	"${CMAKE_CURRENT_LIST_DIR}/2-13-3.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/4-10-2.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/6-4-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/6-4-2.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/6-4-4.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/9-5-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/10-3-2.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/10-3-3.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/11-0-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/12-8-2.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/15-5-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/16-3-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/16-3-2.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/17-0-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/17-0-5.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/18-0-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/18-0-2.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/18-0-3.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/18-0-4.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/18-0-5.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/18-2-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/18-4-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/18-7-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/19-3-1.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/27-0-1.cpp"
+	)
+
+SET(LOCAL_HEADERS
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/2-13-3.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/4-10-2.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/6-4-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/6-4-2.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/6-4-4.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/9-5-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/10-3-2.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/10-3-3.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/11-0-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/12-8-2.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/15-5-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/16-3-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/16-3-2.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/17-0-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/17-0-5.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/18-0-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/18-0-2.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/18-0-3.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/18-0-4.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/18-0-5.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/18-2-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/18-4-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/18-7-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/19-3-1.h"
+	"${PROJECT_SOURCE_DIR}/inc/rules/cpp2008/27-0-1.h"
+	)
+	
+target_sources(emboldCxx
+	PRIVATE
+        "${LOCAL_SOURCES}"
+        "${LOCAL_HEADERS}"
+)
+
+SOURCE_GROUP("Source Files\\cpp2008" FILES ${LOCAL_SOURCES})
+SOURCE_GROUP("Header Files\\cpp2008" FILES ${LOCAL_HEADERS})
