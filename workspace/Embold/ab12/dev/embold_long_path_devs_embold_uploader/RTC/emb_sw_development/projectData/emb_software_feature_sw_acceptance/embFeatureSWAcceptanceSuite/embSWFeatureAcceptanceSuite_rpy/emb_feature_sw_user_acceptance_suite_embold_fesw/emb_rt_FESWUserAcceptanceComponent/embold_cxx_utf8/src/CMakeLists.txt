@@ -1,10 +1,10 @@
 
 # Create a variable containing the source files for your target
 set(LOCAL_SOURCES
-    "${CMAKE_CURRENT_LIST_DIR}/EmboldTidyCheck.cpp"
-    "${CMAKE_CURRENT_LIST_DIR}/RuleHeadlineTexts.cpp"
-    "${CMAKE_CURRENT_LIST_DIR}/EmboldTidyModule.cpp"
-	"${CMAKE_CURRENT_LIST_DIR}/GammaRuleFactory.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/EmboldTidyCheckב.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/RuleHeadlineTextsé.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/EmboldTidyModuleג.cpp"
+	"${CMAKE_CURRENT_LIST_DIR}/GammaRuleFactoryכ.cpp"
 )
 
 SET(LOCAL_HEADERS

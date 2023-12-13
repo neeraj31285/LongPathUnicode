@@ -9,6 +9,11 @@ if(WIN32)
 	set (CMAKE_CXX_STANDARD 17)
 endif()
 
+# Set NDEBUG macro
+if (NOT DEFINED NDEBUG)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG")
+endif()
+
 set(LLVM_SRC "" CACHE PATH "")
 
 if (LLVM_SRC STREQUAL "") 
@@ -25,14 +30,8 @@ MESSAGE(STATUS ${CLANG_DIR_NAME})
 
 if(WIN32)
 set(LLVM_BUILD "" CACHE PATH "")
-set(BOOST_ROOT "" CACHE PATH "")
-
 if (LLVM_BUILD STREQUAL "") 
 message(FATAL_ERROR ":Required LLVM build directory path")
-endif () 
-
-if (BOOST_ROOT STREQUAL "") 
-message(FATAL_ERROR ":Required Boost source directory path")
 endif () 
 INCLUDE_DIRECTORIES(${LLVM_SRC}/include)
 INCLUDE_DIRECTORIES(${LLVM_SRC}/tools/${CLANG_DIR_NAME}/include)
@@ -40,8 +39,6 @@ INCLUDE_DIRECTORIES(${LLVM_SRC}/tools/${CLANG_DIR_NAME}/tools/extra)
 INCLUDE_DIRECTORIES(${LLVM_BUILD}/include)
 INCLUDE_DIRECTORIES(${LLVM_BUILD}/tools/${CLANG_DIR_NAME}/include)
 
-# Note: All the link_directories should be before add_executable command.
-#LINK_DIRECTORIES(${LLVM_BUILD}/$(CONFIGURATION)/lib)
 endif(WIN32)
 
 if(UNIX)
@@ -64,7 +61,7 @@ ADD_LIBRARY(${PROJECT_NAME} STATIC "")
 set(PCH_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/inc/emboldCxxPch.h")
 
 # Specify the source file that will include the PCH (can be any source file)
-set(PCH_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/EmboldTidyModule.cpp")
+set(PCH_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/EmboldTidyModuleג.cpp")
 
 # Set the precompiled header options
 target_precompile_headers(emboldCxx PRIVATE ${PCH_HEADER})
@@ -79,14 +76,6 @@ INCLUDE_DIRECTORIES(inc/rules/checks)
 INCLUDE_DIRECTORIES(inc/rules/common)
 INCLUDE_DIRECTORIES(inc/rules/cpp2008)
 INCLUDE_DIRECTORIES("../common/inc")
-
-##############################################################################
-#                  Third-party Includes                                      #
-##############################################################################
-INCLUDE_DIRECTORIES("../ThirdParty/logger")
-INCLUDE_DIRECTORIES("../ThirdParty")
-INCLUDE_DIRECTORIES("../ThirdParty/log4cpp/include")
-INCLUDE_DIRECTORIES("${BOOST_ROOT}")
 
 if (UNIX)
 ###############################################################################
@@ -103,28 +92,6 @@ if (LLVM_FOUND)
 #  llvm_map_components_to_libnames(llvm_libs core analysis codegen libdriver support)
 #	TARGET_LINK_LIBRARIES(${CXX_LIB_NAME} ${llvm_libs})
 endif (LLVM_FOUND)
-###############################################################################
-#               Boost                                                         #
-###############################################################################
-set(Boost_USE_STATIC_LIBS ON) # only find static libs
-set(Boost_USE_MULTITHREADED ON)  
-set(Boost_USE_STATIC_RUNTIME OFF) 
-find_package(Boost 1.60.0 COMPONENTS system filesystem REQUIRED)
-if(Boost_FOUND)
-include_directories(${Boost_INCLUDE_DIRS})
-target_link_libraries(${CXX_LIB_NAME} 
-  ${Boost_FILESYSTEM_LIBRARY}
-  ${Boost_SYSTEM_LIBRARY}
-)
-endif()
-#               LOG4CPP                                                           #
-###############################################################################
-find_package(Log4cpp REQUIRED)
-if (Log4cpp_FOUND)
-  include_directories(${Log4cpp_INCLUDE_DIRS})
-  TARGET_LINK_LIBRARIES(${CXX_LIB_NAME} ${Log4cpp_LIBRARIES})
-  MESSAGE(STATUS ${Log4cpp_LIBRARIES})
-endif (Log4cpp_FOUND)
 
 endif (UNIX)
 INCLUDE(src/CMakeLists.txt)
